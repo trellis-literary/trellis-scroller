@@ -1,0 +1,35 @@
+{
+  "name": "script-bundler",
+  "version": "1.0.0",
+  "description": "tool to compile js into a bundled and minified script tag",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elsa-brown/script-bundler.git"
+  },
+  "author": "elsa brown",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elsa-brown/script-bundler/issues"
+  },
+  "homepage": "https://github.com/elsa-brown/script-bundler#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.3.0",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.55.1",
+    "webpack-cli": "^4.8.0"
+  },
+  "dependencies": {
+    "node-sass": "^6.0.1"
+  }
+}
