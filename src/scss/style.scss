@@ -8,24 +8,71 @@ body {
     position: absolute;
     top: 0;
     right: 5%;
-    width: 400px;
+    width: 20rem;
 }
 
 .scroller {
+    position: relative;
     height: 100%;
-    width: 200px;
+    width: 100%;
 
       img {
           width: 100%;
       }
 }
 
+#scroller-one {
+    animation: 30s ease-in-out infinite scrollFirst;
+
+    img {
+        padding: 25vh 0 25vh;
+    }
+}
+
 #scroller-two {
+    animation: 30s ease-in-out infinite scrollSecond;
+
     transform: translateX(-50px);
 }
 
 footer {
     .image-block {
         display: none;
+    }
+}
+
+@keyframes scrollFirst {
+    0% {
+        top: 0;
+    }
+
+    33% {
+        top: -100%;
+    }
+
+    66% {
+        top: -200%;
+    }
+
+    100% {
+        top: -300%;
+    }
+}
+
+@keyframes scrollSecond {
+    0% {
+        top: 0;
+    }
+
+    33% {
+        top: -33%;
+    }
+
+    66% {
+        top: -66%;
+    }
+
+    100% {
+        top: -100%;
     }
 }

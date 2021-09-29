@@ -1,3 +1,4 @@
+import lozad from 'lozad'
 import '../scss/style.scss';
 
 const buildImageScrollers = () => {
@@ -25,9 +26,9 @@ const buildImageScrollers = () => {
 
     [...images].forEach((image, idx) => {
         const imgSrc = image.getAttribute("data-src");
-        console.log('images: ', images);
 
         const newImg = document.createElement('img');
+        newImg.className = 'lozad';
         newImg.src = imgSrc;
 
         idx % 2 ? 
