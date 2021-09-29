@@ -1,31 +1,10 @@
-body {
-    background-color: lavender;
-}
-
-.scrollers {
-    display: flex;
-    height: 100%;
+.script-bundler-div {
+    background-color: lemonchiffon;
+    padding: 10px;
     position: absolute;
+    text-align: center;
     top: 0;
-    right: 5%;
-    width: 400px;
-}
-
-.scroller {
-    height: 100%;
-    width: 200px;
-
-      img {
-          width: 100%;
-      }
-}
-
-#scroller-two {
-    transform: translateX(-50px);
-}
-
-footer {
-    .image-block {
-        display: none;
-    }
+    width: 100%;
+    
+    
 }
