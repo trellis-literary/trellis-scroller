@@ -30,6 +30,7 @@ const buildImageScrollers = () => {
         const newImg = document.createElement('img');
         newImg.className = 'lozad';
         newImg.src = imgSrc;
+        newImg.setAttribute('data-image-resolution', '2500w')
 
         idx % 2 ? 
             scrollerOne.appendChild(newImg) :
@@ -37,23 +38,16 @@ const buildImageScrollers = () => {
     });
 }
 
-buildImageScrollers();
+const init = () => {
+    if (document.readyState !== "loading") {
+        buildImageScrollers();
+    } else {
+        document.onreadystatechange = () => {
+            if ( document.readyState !== 'loading') {
+                buildImageScrollers();
+            }
+        }
+    }
+}
 
-// const init = () => {
-//     switch (document.readyState) {
-//         case 'complete':
-//         case 'interactive':
-//             buildImageScrollers();
-//             break;
-//         default:
-//             document.onreadystatechange = () => {
-//                 if ( document.readyState === 'complete' || 
-//                     document.readyState === 'interactive' ) {
-//                     buildImageScrollers();
-//                 }
-//             }
-//             break;
-//     }
-// }
-
-// init();
+init();

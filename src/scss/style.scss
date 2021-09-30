@@ -8,13 +8,13 @@ body {
     position: absolute;
     top: 0;
     right: 5%;
-    width: 20rem;
+    width: 22rem;
 }
 
 .scroller {
-    position: relative;
+    position: absolute;
     height: 100%;
-    width: 100%;
+    width: 50%;
 
       img {
           width: 100%;
@@ -22,7 +22,7 @@ body {
 }
 
 #scroller-one {
-    animation: 30s ease-in-out infinite scrollFirst;
+    animation: 60s ease-in-out infinite scrollFirst;
 
     img {
         padding: 25vh 0 25vh;
@@ -30,9 +30,8 @@ body {
 }
 
 #scroller-two {
-    animation: 30s ease-in-out infinite scrollSecond;
-
-    transform: translateX(-50px);
+    animation: 60s ease-in-out infinite scrollSecond;
+    right: 2rem;
 }
 
 footer {
@@ -43,36 +42,50 @@ footer {
 
 @keyframes scrollFirst {
     0% {
-        top: 0;
+        transform: translateY(0);
     }
 
-    33% {
-        top: -100%;
+    20% {
+        transform: translateY(-100%);
     }
 
-    66% {
-        top: -200%;
+    40% {
+        transform: translateY(-200%);
+    }
+
+    60% {
+        transform: translateY(-100%);
     }
 
     100% {
-        top: -300%;
+        transform: translateY(0);
     }
 }
 
 @keyframes scrollSecond {
     0% {
-        top: 0;
+        transform: translateY(0);
     }
 
-    33% {
-        top: -33%;
+    20% {
+        transform: translateY(-25%);
     }
 
-    66% {
-        top: -66%;
+    40% {
+        transform: translateY(-50%);
+    }
+
+    60% {
+        transform: translateY(-25%);
     }
 
     100% {
-        top: -100%;
+        transform: translateY(0);
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .scrollers {
+        display: none;
     }
 }
