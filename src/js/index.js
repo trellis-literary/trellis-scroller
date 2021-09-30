@@ -1,7 +1,7 @@
 import lozad from 'lozad'
 import '../scss/style.scss';
 
-const init = () => {
+const buildImageScrollers = () => {
     console.log('HELLO SCRIPT BUNDLER');
 
     const newDiv = document.createElement('div');
@@ -38,10 +38,12 @@ const init = () => {
 }
 
 const init = () => {
+    console.log('INIT. readyState: ', document.readyState, 'document: ', document);
     if (document.readyState !== "loading") {
         buildImageScrollers();
     } else {
         document.onreadystatechange = () => {
+            console.log('CHANGE. readyState: ', document.readyState, 'document: ', document);
             if ( document.readyState !== 'loading') {
                 buildImageScrollers();
             }
