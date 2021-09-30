@@ -2,11 +2,12 @@ import lozad from 'lozad'
 import '../scss/style.scss';
 
 const buildImageScrollers = () => {
-    console.log('HELLO SCRIPT BUNDLER');
+    console.log('building scrollers');
+    const page = document.getElementById('page');
+    const firstSection = page.querySelector('.page-section');
 
-    const newDiv = document.createElement('div');
-    newDiv.className = 'script-bundler-div';
-    newDiv.innerHTML = "This element was created with script-bundler";
+    const scrollers = document.createElement('div');
+    scrollers.className = 'scrollers';
 
     const scrollerOne = document.createElement('div');
     scrollerOne.className = 'scroller';
