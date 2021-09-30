@@ -6,7 +6,13 @@ const buildImageScrollers = () => {
     const page = document.getElementById('page');
     const firstSection = page.querySelector('.page-section');
 
-    const scrollers = document.createElement('div');
+    let scrollers = document.querySelector('.scrollers');
+    if (scrollers) { 
+        console.warn('SCROLLERS ALREADY LOADED');
+        return; 
+    }
+
+    scrollers = document.createElement('div');
     scrollers.className = 'scrollers';
 
     const scrollerOne = document.createElement('div');
@@ -39,15 +45,15 @@ const buildImageScrollers = () => {
 }
 
 const init = () => {
-    console.log('INIT. readyState: ', document.readyState, 'document: ', document);
-    if (document.readyState !== "loading") {
+    console.log('INIT. readyState: ', document.readyState);
+    if (window.location.pathname.length > 1) { return; }
+    
+    if (document.readyState === 'complete') {
         buildImageScrollers();
     } else {
-        let hasRun = false;
         document.onreadystatechange = () => {
-            console.log('CHANGE. readyState: ', document.readyState, 'document: ', document);
-            if (document.readyState !== 'loading' && !hasRun) {
-                hasRun = true;
+            console.log('CHANGE. readyState: ', document.readyState);
+            if (document.readyState === 'complete') {
                 buildImageScrollers();
             }
         }
