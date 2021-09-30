@@ -1,17 +1,20 @@
-.script-bundler-div {
-    background-color: lemonchiffon;
-    padding: 10px;
+body {
+    background-color: lavender;
+}
+
+.scrollers {
+    display: flex;
+    height: 100%;
     position: absolute;
-    text-align: center;
     top: 0;
     right: 5%;
-    width: 22rem;
+    width: 20rem;
 }
 
 .scroller {
-    position: absolute;
+    position: relative;
     height: 100%;
-    width: 50%;
+    width: 100%;
 
       img {
           width: 100%;
@@ -19,7 +22,7 @@
 }
 
 #scroller-one {
-    animation: 60s ease-in-out infinite scrollFirst;
+    animation: 30s ease-in-out infinite scrollFirst;
 
     img {
         padding: 25vh 0 25vh;
@@ -27,8 +30,9 @@
 }
 
 #scroller-two {
-    animation: 60s ease-in-out infinite scrollSecond;
-    right: 2rem;
+    animation: 30s ease-in-out infinite scrollSecond;
+
+    transform: translateX(-50px);
 }
 
 footer {
@@ -39,50 +43,36 @@ footer {
 
 @keyframes scrollFirst {
     0% {
-        transform: translateY(0);
+        top: 0;
     }
 
-    20% {
-        transform: translateY(-100%);
+    33% {
+        top: -100%;
     }
 
-    40% {
-        transform: translateY(-200%);
-    }
-
-    60% {
-        transform: translateY(-100%);
+    66% {
+        top: -200%;
     }
 
     100% {
-        transform: translateY(0);
+        top: -300%;
     }
 }
 
 @keyframes scrollSecond {
     0% {
-        transform: translateY(0);
+        top: 0;
     }
 
-    20% {
-        transform: translateY(-25%);
+    33% {
+        top: -33%;
     }
 
-    40% {
-        transform: translateY(-50%);
-    }
-
-    60% {
-        transform: translateY(-25%);
+    66% {
+        top: -66%;
     }
 
     100% {
-        transform: translateY(0);
-    }
-}
-
-@media only screen and (max-width: 800px) {
-    .scrollers {
-        display: none;
+        top: -100%;
     }
 }
