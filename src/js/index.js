@@ -33,21 +33,22 @@ const buildImageScrollers = () => {
     [...images].forEach((image, idx) => {
         const imgSrc = image.getAttribute("data-src");
 
-        const newImg = document.createElement('img');
-        newImg.className = 'lozad';
-        newImg.src = imgSrc;
-        newImg.setAttribute('data-image-resolution', '2500w')
+        const scrollerImg = document.createElement('img');
+        scrollerImg.className = 'lozad';
+        scrollerImg.src = imgSrc;
 
         idx % 2 ? 
-            scrollerOne.appendChild(newImg) :
-            scrollerTwo.appendChild(newImg);
+            scrollerOne.appendChild(scrollerImg) :
+            scrollerTwo.appendChild(scrollerImg);
     });
+
+    setTimeout(() => { scrollers.classList.add('fade-in'); }, 300);
 }
 
 const init = () => {
     console.log('INIT. readyState: ', document.readyState);
     if (window.location.pathname.length > 1) { return; }
-    
+
     if (document.readyState === 'complete') {
         buildImageScrollers();
     } else {

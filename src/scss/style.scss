@@ -8,7 +8,13 @@ body {
     position: absolute;
     top: 0;
     right: 5%;
-    width: 20rem;
+    width: 25rem;
+    opacity: 0;
+    transition: opacity 2s ease-in;
+
+    &.fade-in {
+        opacity: 1;
+    }
 }
 
 .scroller {
@@ -16,24 +22,22 @@ body {
     height: 100%;
     width: 100%;
 
-      img {
-          width: 100%;
-      }
+    img {
+        width: 100%;
+    }
 }
 
 #scroller-one {
     animation: 60s ease-in-out infinite scrollFirst;
 
     img {
-        padding: 25vh 0 25vh;
+        padding: calc((100vh - 242px) / 2) 0 calc((100vh - 242px) / 2)
     }
 }
 
 #scroller-two {
     animation: 60s ease-in-out infinite scrollSecond;
-    right: 2rem;
-
-    transform: translateX(-50px);
+    left: 1rem;
 }
 
 footer {
@@ -83,6 +87,12 @@ footer {
 
     100% {
         transform: translateY(0);
+    }
+}
+
+@media only screen and (max-width: 1150px) {
+    .scrollers {
+        width: 20rem;
     }
 }
 
