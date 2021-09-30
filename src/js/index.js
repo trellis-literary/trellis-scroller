@@ -43,9 +43,11 @@ const init = () => {
     if (document.readyState !== "loading") {
         buildImageScrollers();
     } else {
+        let hasRun = false;
         document.onreadystatechange = () => {
             console.log('CHANGE. readyState: ', document.readyState, 'document: ', document);
-            if ( document.readyState !== 'loading') {
+            if (document.readyState !== 'loading' && !hasRun) {
+                hasRun = true;
                 buildImageScrollers();
             }
         }
