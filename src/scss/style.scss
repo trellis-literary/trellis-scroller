@@ -1,43 +1,67 @@
-body {
-    background-color: lavender;
-}
-
 .scrollers {
     display: flex;
-    height: 100%;
+    height: calc(100% + 6.6vmax);
     position: absolute;
     top: 0;
     right: 5%;
-    width: 25rem;
     opacity: 0;
+    overflow: hidden;
     transition: opacity 2s ease-in;
+    z-index: 1;
 
     &.fade-in {
         opacity: 1;
     }
+
+    // &::after {
+    //     position: absolute;
+    //     bottom: -2px;
+    //     height: 10%;
+    //     width: 120%;
+    //     right: -2rem;
+    //     content: "";
+    //     background: linear-gradient(to top, #fefbf1 50%, rgba(255,255,255,0) 100%);
+    //     pointer-events: none;
+    //     z-index: 10;
+    // }
 }
 
 .scroller {
     position: relative;
     height: 100%;
-    width: 100%;
+    width: 160px;
 
     img {
-        width: 100%;
+        width: 160px;
+        height: 242px;
+    }
+
+    .item {
+        height: 242px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: solid 1px;
+        box-sizing: border-box;
+        margin-bottom: 14px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 }
 
 #scroller-one {
-    animation: 60s ease-in-out infinite scrollFirst;
+    animation: 240s ease-in-out infinite scrollFirst;
+    margin-right: 1rem;
 
     img {
-        padding: calc((100vh - 242px) / 2) 0 calc((100vh - 242px) / 2)
+        padding: calc((100vh - 242px) / 2) 0 calc((100vh - 242px) / 2);
     }
 }
 
 #scroller-two {
-    animation: 60s ease-in-out infinite scrollSecond;
-    left: 1rem;
+    animation: 30s ease-in-out infinite scrollSecond;
 }
 
 footer {
@@ -46,55 +70,84 @@ footer {
     }
 }
 
+// @mixin moveScrollerOne ($numSlides, $imageHeightPx) {
+//     $numIntervals: $numSlides * 2;
+//     $intervalPercentage: 100 / $numIntervals;
+//     $halfImgHeight: $imageHeightPx / 2;
+//     $y: 0;
+
+//     @for $i from 0 through $numIntervals {
+//         @if ($i < $numSlides) {
+//             $y: $i * -1;
+//         } @else if  ($i == $numSlides) {
+//             $y: ($numSlides - 1) * -1;
+//         } @else {
+//             $y: ($numIntervals - $i - 1) * -1;
+//         }
+
+//         #{$intervalPercentage * $i}% {
+//             transform: translateY(calc((50vh + #{$halfImgHeight}px) * #{$y}));
+//         }
+//     }
+// }
+
+@mixin moveScrollerOne ($numSlides, $imageHeightPx) {
+        $numIntervals: $numSlides * 2;
+        $intervalPercentage: 100 / $numIntervals;
+        $halfImgHeight: $imageHeightPx / 2;
+        $y: 0;
+    
+        @for $i from 0 through $numIntervals {
+            @if ($i < $numSlides) {
+                $y: $i * -1;
+            } @else if  ($i == $numSlides) {
+                $y: ($numSlides - 1) * -1;
+            } @else {
+                $y: ($numIntervals - $i - 1) * -1;
+            }
+    
+            #{$intervalPercentage * $i}% {
+                transform: translateY(calc(102vh * #{$y}));
+            }
+        }
+    }
+
 @keyframes scrollFirst {
-    0% {
-        transform: translateY(0);
-    }
+    @include moveScrollerOne(16, 242);
+}
 
-    20% {
-        transform: translateY(-100%);
-    }
+@mixin moveScrollerTwo($numSlides, $imageHeightPx, $marginBtmPx) {
+    $numIntervals: $numSlides * 2;
+    $slideHeight: ($imageHeightPx + $marginBtmPx) * 2;
+    $intervalPercentage: 100 / $numIntervals;
+    $y: 0;
 
-    40% {
-        transform: translateY(-200%);
-    }
+    @for $i from 0 through $numIntervals {
+       @if ($i < $numSlides) {
+            $y: $slideHeight * $i * -1;
+        } @else if ($i == $numSlides) {
+            $y: ($slideHeight * ($i - 1) + ($slideHeight / 2 + $marginBtmPx)) * -1;
+        } @else if ($i == $numSlides + 1) {
+            $y: ($slideHeight * ($i - 2) + ($slideHeight / 2 + $marginBtmPx)) * -1;
+        } @else {
+            $y: (($numIntervals - $i - 1) * $slideHeight);
+        }
 
-    60% {
-        transform: translateY(-100%);
-    }
-
-    100% {
-        transform: translateY(0);
+        #{$intervalPercentage * $i}% {
+            transform: translateY(#{$y}px);
+        }
     }
 }
 
 @keyframes scrollSecond {
-    0% {
-        transform: translateY(0);
-    }
-
-    20% {
-        transform: translateY(-25%);
-    }
-
-    40% {
-        transform: translateY(-50%);
-    }
-
-    60% {
-        transform: translateY(-25%);
-    }
-
-    100% {
-        transform: translateY(0);
-    }
+    @include moveScrollerTwo(7, 242, 14);
 }
 
-@media only screen and (max-width: 1150px) {
-    .scrollers {
-        width: 20rem;
-    }
-}
+// @media only screen and (max-width: 1150px) {
+//     .scroller {
+//         width: 10rem;
+//     }
+// }
 
 @media only screen and (max-width: 800px) {
     .scrollers {

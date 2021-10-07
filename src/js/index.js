@@ -1,5 +1,9 @@
 import lozad from 'lozad'
+import images from './bookCovers';
 import '../scss/style.scss';
+import bookCovers from './bookCovers';
+
+const mockSrc = 'https://images.squarespace-cdn.com/content/v1/5e7a44a18fd13046931c18bf/1617047010557-967SKF5JLONT4GJ8Y12K/AFTERLIFE+paperback.jpg';
 
 const buildImageScrollers = () => {
     console.log('building scrollers');
@@ -27,19 +31,48 @@ const buildImageScrollers = () => {
     scrollers.appendChild(scrollerTwo);
     firstSection.appendChild(scrollers);
 
-    const footer = document.querySelector('footer');
-    const images = footer.querySelectorAll('img');
+    // const footer = document.querySelector('footer');
+    // const images = footer.querySelectorAll('img');
 
-    [...images].forEach((image, idx) => {
-        const imgSrc = image.getAttribute("data-src");
+    // let count = 0;
+    // while (count < 32) {
+    //     count++;
 
-        const scrollerImg = document.createElement('img');
-        scrollerImg.className = 'lozad';
-        scrollerImg.src = imgSrc;
+    //     const scrollerImg = document.createElement('div');
+    //     scrollerImg.className = 'item';
+    //     scrollerImg.innerHTML = count;
 
-        idx % 2 ? 
-            scrollerOne.appendChild(scrollerImg) :
+    //     scrollerOne.appendChild(scrollerImg);
+
+    //     count % 2 ? 
+    //         scrollerOne.appendChild(scrollerImg) :
+    //         scrollerTwo.appendChild(scrollerImg);
+    // }
+
+    // console.log("ONE: ", scrollerOne.children.length, "TWO: ", scrollerTwo.children.length);
+
+    let count = 1;
+    [...images].forEach((imgSrc, idx) => {
+        // const imgSrc = image.getAttribute("data-src");
+
+        
+
+        if (idx % 2) {
+            const scrollerImg = document.createElement('img');
+            scrollerImg.classList.add = 'lozad';
+            scrollerImg.src = imgSrc;
+            scrollerOne.appendChild(scrollerImg);
+        } else {
+            const scrollerImg = document.createElement('div');
+            scrollerImg.className = 'item';
+            scrollerImg.innerHTML = count;
             scrollerTwo.appendChild(scrollerImg);
+            count++;
+        }
+
+        // idx % 2 ? 
+        //     scrollerOne.appendChild(scrollerImg) :
+        //     scrollerTwo.appendChild(scrollerImg);
     });
 
     setTimeout(() => { scrollers.classList.add('fade-in'); }, 300);
