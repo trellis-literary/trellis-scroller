@@ -1,4 +1,5 @@
 import lozad from 'lozad'
+import images from './bookCovers';
 import '../scss/style.scss';
 
 const buildImageScrollers = () => {
@@ -6,7 +7,13 @@ const buildImageScrollers = () => {
     const page = document.getElementById('page');
     const firstSection = page.querySelector('.page-section');
 
-    const scrollers = document.createElement('div');
+    let scrollers = document.querySelector('.scrollers');
+    if (scrollers) { 
+        console.warn('SCROLLERS ALREADY LOADED');
+        return; 
+    }
+
+    scrollers = document.createElement('div');
     scrollers.className = 'scrollers';
 
     const scrollerOne = document.createElement('div');
@@ -21,33 +28,34 @@ const buildImageScrollers = () => {
     scrollers.appendChild(scrollerTwo);
     firstSection.appendChild(scrollers);
 
-    const footer = document.querySelector('footer');
-    const images = footer.querySelectorAll('img');
+    /* USE IF WE LOAD IMAGES IN FOOTER */
+    // const footer = document.querySelector('footer');
+    // const images = footer.querySelectorAll('img');
 
-    [...images].forEach((image, idx) => {
-        const imgSrc = image.getAttribute("data-src");
-
-        const newImg = document.createElement('img');
-        newImg.className = 'lozad';
-        newImg.src = imgSrc;
-        newImg.setAttribute('data-image-resolution', '2500w')
+    let count = 1;
+    [...images].forEach((imgSrc, idx) => {
+        const scrollerImg = document.createElement('img');
+        scrollerImg.classList.add = 'lozad';
+        scrollerImg.src = imgSrc;
 
         idx % 2 ? 
-            scrollerOne.appendChild(newImg) :
-            scrollerTwo.appendChild(newImg);
+            scrollerOne.appendChild(scrollerImg) :
+            scrollerTwo.appendChild(scrollerImg);
     });
+
+    setTimeout(() => { scrollers.classList.add('fade-in'); }, 300);
 }
 
 const init = () => {
-    console.log('INIT. readyState: ', document.readyState, 'document: ', document);
-    if (document.readyState !== "loading") {
+    console.log('INIT. readyState: ', document.readyState);
+    if (window.location.pathname.length > 1) { return; }
+
+    if (document.readyState === 'complete') {
         buildImageScrollers();
     } else {
-        let hasRun = false;
         document.onreadystatechange = () => {
-            console.log('CHANGE. readyState: ', document.readyState, 'document: ', document);
-            if (document.readyState !== 'loading' && !hasRun) {
-                hasRun = true;
+            console.log('CHANGE. readyState: ', document.readyState);
+            if (document.readyState === 'complete') {
                 buildImageScrollers();
             }
         }
