@@ -52,7 +52,7 @@
 }
 
 #scroller-one {
-    animation: 240s ease-in-out infinite scrollFirst;
+    animation: 200s ease-in-out infinite scrollFirst;
     margin-right: 1rem;
 
     img {
@@ -61,7 +61,7 @@
 }
 
 #scroller-two {
-    animation: 30s ease-in-out infinite scrollSecond;
+    animation: 200s linear infinite scrollSecond;
 }
 
 footer {
@@ -70,67 +70,42 @@ footer {
     }
 }
 
-// @mixin moveScrollerOne ($numSlides, $imageHeightPx) {
-//     $numIntervals: $numSlides * 2;
-//     $intervalPercentage: 100 / $numIntervals;
-//     $halfImgHeight: $imageHeightPx / 2;
-//     $y: 0;
-
-//     @for $i from 0 through $numIntervals {
-//         @if ($i < $numSlides) {
-//             $y: $i * -1;
-//         } @else if  ($i == $numSlides) {
-//             $y: ($numSlides - 1) * -1;
-//         } @else {
-//             $y: ($numIntervals - $i - 1) * -1;
-//         }
-
-//         #{$intervalPercentage * $i}% {
-//             transform: translateY(calc((50vh + #{$halfImgHeight}px) * #{$y}));
-//         }
-//     }
-// }
-
 @mixin moveScrollerOne ($numSlides, $imageHeightPx) {
-        $numIntervals: $numSlides * 2;
-        $intervalPercentage: 100 / $numIntervals;
-        $halfImgHeight: $imageHeightPx / 2;
-        $y: 0;
-    
-        @for $i from 0 through $numIntervals {
-            @if ($i < $numSlides) {
-                $y: $i * -1;
-            } @else if  ($i == $numSlides) {
-                $y: ($numSlides - 1) * -1;
-            } @else {
-                $y: ($numIntervals - $i - 1) * -1;
-            }
-    
-            #{$intervalPercentage * $i}% {
-                transform: translateY(calc(102vh * #{$y}));
-            }
+    $numIntervals: $numSlides * 2;
+    $intervalPercentage: 100 / $numIntervals;
+    $halfImgHeight: $imageHeightPx / 2;
+    $y: 0;
+
+    @for $i from 0 through $numIntervals {
+        @if ($i < $numSlides) {
+            $y: $i * -1;
+        } @else if  ($i == $numSlides) {
+            $y: ($numSlides - 1) * -1;
+        } @else {
+            $y: ($numIntervals - $i - 1) * -1;
+        }
+
+        #{$intervalPercentage * $i}% {
+            transform: translateY(calc(102vh * #{$y}));
         }
     }
-
-@keyframes scrollFirst {
-    @include moveScrollerOne(16, 242);
 }
 
 @mixin moveScrollerTwo($numSlides, $imageHeightPx, $marginBtmPx) {
-    $numIntervals: $numSlides * 2;
-    $slideHeight: ($imageHeightPx + $marginBtmPx) * 2;
+    $numIntervals: $numSlides * 2 + 2;
+    $slideHeight: $imageHeightPx + $marginBtmPx;
     $intervalPercentage: 100 / $numIntervals;
     $y: 0;
 
     @for $i from 0 through $numIntervals {
-       @if ($i < $numSlides) {
+       @if ($i <= $numSlides) {
             $y: $slideHeight * $i * -1;
-        } @else if ($i == $numSlides) {
-            $y: ($slideHeight * ($i - 1) + ($slideHeight / 2 + $marginBtmPx)) * -1;
         } @else if ($i == $numSlides + 1) {
-            $y: ($slideHeight * ($i - 2) + ($slideHeight / 2 + $marginBtmPx)) * -1;
+            $y: $slideHeight * $numSlides * -1;
+        } @else if ($i == $numIntervals){
+            $y: 0;
         } @else {
-            $y: (($numIntervals - $i - 1) * $slideHeight);
+            $y: ($i - $numIntervals + 1) * $slideHeight;
         }
 
         #{$intervalPercentage * $i}% {
@@ -139,18 +114,24 @@ footer {
     }
 }
 
-@keyframes scrollSecond {
-    @include moveScrollerTwo(7, 242, 14);
+@keyframes scrollFirst {
+    @include moveScrollerOne(16, 242);
 }
 
-// @media only screen and (max-width: 1150px) {
-//     .scroller {
-//         width: 10rem;
-//     }
-// }
+
+@keyframes scrollSecond {
+    @include moveScrollerTwo(13, 258, 0);
+}
+
+@media only screen and (max-width: 1030px) {
+    #scroller-one {
+        width: 10rem;
+    }
+}
 
 @media only screen and (max-width: 800px) {
     .scrollers {
         display: none;
     }
 }
+
