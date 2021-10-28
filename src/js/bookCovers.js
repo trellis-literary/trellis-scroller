@@ -16,7 +16,7 @@ export default [
     "https://images.squarespace-cdn.com/content/v1/612ec2a4634d6429a3f4db2f/199238a6-c718-4960-ba7b-e2f7db71370f/MTBM+cover_600.png?format=500w",
     "https://images.squarespace-cdn.com/content/v1/612ec2a4634d6429a3f4db2f/beb2f8bd-ef80-4a5d-aae0-1e681f457b16/next+ship+home+cover_600.png?format=500w",
     "https://images.squarespace-cdn.com/content/v1/612ec2a4634d6429a3f4db2f/a31866d1-49cf-45a6-b1a3-3962a14100c9/NONE+BUT+THE+RIGHTEOUS+cover_600.png?format=500w",
-    "https://images.squarespace-cdn.com/content/v1/612ec2a4634d6429a3f4db2f/84ccaaf4-e34e-4a8b-9fb1-29e1da9bdb29/OurAmericanFriend3_600.png?format=500w",
+    // "https://images.squarespace-cdn.com/content/v1/612ec2a4634d6429a3f4db2f/84ccaaf4-e34e-4a8b-9fb1-29e1da9bdb29/OurAmericanFriend3_600.png?format=500w",
     "https://images.squarespace-cdn.com/content/v1/612ec2a4634d6429a3f4db2f/d03d2427-ff0e-4531-aeff-c26a11434334/Out+of+Office+final+jacket_600.png?format=300w",
     "https://images.squarespace-cdn.com/content/v1/612ec2a4634d6429a3f4db2f/242c829d-5a33-4dfc-bcb3-5bd66aab8170/Patron+Saint+cover_600.png?format=300w",
     "https://images.squarespace-cdn.com/content/v1/612ec2a4634d6429a3f4db2f/f09276a6-c445-414c-a236-330eacc68249/RoomandBoard_8.18_600.png?format=300w",
