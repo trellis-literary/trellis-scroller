@@ -12,18 +12,6 @@
     &.fade-in {
         opacity: 1;
     }
-
-    // &::after {
-    //     position: absolute;
-    //     bottom: -2px;
-    //     height: 10%;
-    //     width: 120%;
-    //     right: -2rem;
-    //     content: "";
-    //     background: linear-gradient(to top, #fefbf1 50%, rgba(255,255,255,0) 100%);
-    //     pointer-events: none;
-    //     z-index: 10;
-    // }
 }
 
 .scroller {
