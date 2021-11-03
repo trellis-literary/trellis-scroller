@@ -1,5 +1,3 @@
-import lozad from 'lozad'
-import images from './bookCovers';
 import '../scss/style.scss';
 
 const buildImageScrollers = () => {
@@ -29,14 +27,14 @@ const buildImageScrollers = () => {
     firstSection.appendChild(scrollers);
 
     /* USE IF WE LOAD IMAGES IN FOOTER */
-    // const footer = document.querySelector('footer');
-    // const images = footer.querySelectorAll('img');
+    const footer = document.querySelector('footer');
+    const images = footer.querySelectorAll('img');
 
     let count = 1;
-    [...images].forEach((imgSrc, idx) => {
+    [...images].forEach((img, idx) => {
         const scrollerImg = document.createElement('img');
-        scrollerImg.classList.add = 'lozad';
-        scrollerImg.src = imgSrc;
+        scrollerImg.src = img.dataset.src;
+        img.parentElement.removeChild(img);
 
         idx % 2 ? 
             scrollerOne.appendChild(scrollerImg) :
