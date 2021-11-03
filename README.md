@@ -14,8 +14,12 @@ This script pulls any images that have been uploaded into the homepage footer in
 It is designed to work with exactly 32 images. Modifying the number of images may result in broken animation.
 
 to develop locally:
+```
 git clone
 npm install
+```
 
 to build script:
+```
 npm start
+```
