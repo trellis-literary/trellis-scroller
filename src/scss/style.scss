@@ -52,12 +52,6 @@
     animation: 200s linear infinite scrollSecond;
 }
 
-footer {
-    .image-block {
-        display: none;
-    }
-}
-
 @mixin moveScrollerOne ($numSlides, $imageHeightPx) {
     $numIntervals: $numSlides * 2;
     $intervalPercentage: 100 / $numIntervals;

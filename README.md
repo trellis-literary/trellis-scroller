@@ -3,7 +3,6 @@
 This project bundles JavaScript and SCSS into a script file that is injected onto trellisliterary.com in order to display an animated scroller of book cover images.
 
 The images are hosted on trellisliterary.com in the homepage footer element where they are hidden by default css on the page:
-
 ```
 footer .image-block {
   display: none;
