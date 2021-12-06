@@ -34,7 +34,6 @@ const buildImageScrollers = () => {
     [...images].forEach((img, idx) => {
         const scrollerImg = document.createElement('img');
         scrollerImg.src = img.dataset.src;
-        img.parentElement.removeChild(img);
 
         idx % 2 ? 
             scrollerOne.appendChild(scrollerImg) :
