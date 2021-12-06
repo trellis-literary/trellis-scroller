@@ -4,7 +4,7 @@ This project bundles JavaScript and SCSS into a script file that is injected ont
 
 The latest release from the file: `dist/index.bundle.js` is published and delivered using [jsDelivr](https://www.jsdelivr.com/) with an endpoint in the following format:
 ```
-https://cdn.jsdelivr.net/gh/trellis-scroller/trellis-scroller@2.0.0/dist/index.bundle.js
+https://cdn.jsdelivr.net/gh/trellis-literary/trellis-scroller@2.0.0/dist/index.bundle.js
 ```
 
 The images that populate the scroller are hosted on trellisliterary.com in the homepage footer element, where they are hidden by default css on the page as follows:
